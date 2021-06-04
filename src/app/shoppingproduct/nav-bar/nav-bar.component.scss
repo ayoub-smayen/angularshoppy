@@ -1,0 +1,61 @@
+.--dark {
+  --bg: rgb(59, 59, 78);
+  --card-bg: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.3) 33%,
+    rgba(255, 255, 255, 0.32) 33% 66%,
+    rgba(255, 255, 255, 0.34) 66% 100%
+  );
+  --card-border: 1px solid rgba(255, 255, 255, 0.3);
+  --switch-bg: rgb(88, 88, 88);
+  --switch-color: rgb(245, 24, 98);
+}
+
+.--embossed {
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+}
+
+.--hide {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  outline: none;
+  appearance: none;
+  border: 0;
+  background: var(--switch-bg);
+  border-radius: 1.5em;
+  width: 4em;
+  height: 2em;
+  cursor: pointer;
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0.3em;
+    left: 0.3em;
+    background: var(--switch-color);
+    border-radius: 50%;
+    width: 1.4em;
+    height: 1.4em;
+    transition: left 0.2s ease;
+  }
+  &:checked:after {
+    left: 2.4em;
+  }
+}
+
+.--light {
+    --bg: rgb(230, 230, 243);
+    --card-bg: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.1) 33%,
+      rgba(0, 0, 0, 0.12) 33% 66%,
+      rgba(0, 0, 0, 0.14) 66% 100%
+    );
+    --card-border: 1px solid rgba(255, 255, 255, 0.7);
+    --switch-bg: rgb(194, 190, 228);
+    --switch-color: rgb(245, 24, 98);
+  }
+  
+  

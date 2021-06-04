@@ -1,0 +1,125 @@
+<section id="form"><!--form-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-1">
+                <div class="login-form"><!--login form-->
+                    <h2>Login to your account</h2>
+                    <form (ngSubmit)="login(f1)" #f1="ngForm" novalidate class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="usernamelogin" id="usernamelogin" name="username" type="text" #un0="ngModel" [class.invalid]="un0.errors?.required && un0.touched"
+                                required>
+                              <label for="usernamelogin">Username</label>
+                              <div *ngIf="un0.errors?.required && un0.touched" class="red-text darken-1">
+                                Username is required
+                              </div>
+                            </div>
+                          </div>
+                          <br/>
+                          <br/>
+                          <br/>
+                    
+                          <br/>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="passwordlogin" id="passwordlogin" name="password" type="password" #p0="ngModel" [class.invalid]="p0.errors?.required && p0.touched"
+                                required>
+                              <label for="passwordlogin">Password</label>
+                              <div *ngIf="p0.errors?.required && p0.touched" class="red-text darken-1">
+                                Password is required
+                              </div>
+                            </div>
+                          </div>
+                        <span>
+                            <input type="checkbox" class="checkbox"> 
+                            Keep me signed in
+                        </span>
+                        <div class="row">
+                            <div class="input-field col s4">
+                              <button [disabled]="f1.invalid" class="btn waves-effect waves-light cyan accent-4 btnSubmit" type="submit" name="action">login</button>
+                            </div>
+                          </div>
+                    </form>
+                </div><!--/login form-->
+            </div>
+            <div class="col-sm-1">
+                <h2 class="or">OR</h2>
+            </div>
+            <div class="col-sm-4">
+                <div class="signup-form"><!--sign up form-->
+                    <h2>New User Signup!</h2>
+                    <form (ngSubmit)="register(f)" #f="ngForm" novalidate class="col s12">
+                        <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="username" id="username" name="username" type="text" #un="ngModel" [class.invalid]="un.errors?.required && un.touched"
+                                required>
+                              <label for="username">Username</label>
+                              <div *ngIf="un.errors?.required && un.touched" class="red-text darken-1">
+                                Username is required
+                              </div>
+                            </div>
+                          </div>
+              
+              
+                           <br/>
+                           <br/>
+                           <br/>
+              
+                           <br/>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="email" id="email" name="eamil" type="email" #p1="ngModel" [class.invalid]="p1.errors?.required && p1.touched"
+                                required>
+                              <label for="email">email</label>
+                              <div *ngIf="p1.errors?.required && p1.touched" class="red-text darken-1">
+                                email is required  or not email input 
+                              </div>
+                            </div>
+                          </div>
+              
+                          <br/>
+                          <br/>
+                          <br/>
+              
+                          <br/>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="password" id="password" name="password" type="password" #p="ngModel" [class.invalid]="p.errors?.required && p.touched"
+                                required>
+                              <label for="password">Password</label>
+                              <div *ngIf="p.errors?.required && p.touched" class="red-text darken-1">
+                                Password is required
+                              </div>
+                            </div>
+                          </div>
+              
+                          <br/>
+                          <br/>
+                          <br/>
+              
+                          <br/>
+                          <div class="row">
+                            <div class="input-field col s6">
+                              <input [(ngModel)]="password2" id="password2" name="password2" type="password" #p2="ngModel" required>
+                              <label for="password2">Repeat password</label>
+                              <div *ngIf="password2!=password && p2.touched" class="red-text darken-1">
+                                Passwords must match
+                              </div>
+                            </div>
+                          </div>
+                          <br/>
+                          <br/>
+                          <br/>
+              
+                          <br/>
+                          <div class="row">
+                            <div class="input-field col s4">
+                              <button [disabled]="f.invalid || password2!=password" class="btn waves-effect waves-light cyan accent-4 btnContact" type="submit" name="action">Submit</button>
+                            </div>
+                          </div>
+                    </form>
+                </div><!--/sign up form-->
+            </div>
+        </div>
+    </div>
+</section><!--/form-->

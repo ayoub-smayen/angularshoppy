@@ -1,0 +1,172 @@
+<header id="header"><!--header-->
+    <div class="header_top"><!--header_top-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-6">
+
+                    <input type="checkbox" class="switch" onchange="sw()" />
+                    switch
+
+                   location  {{currLng}} : {{currLat}}
+
+                    <div class="contactinfo">
+                        <ul class="nav nav-pills" *ngIf="isLoggedIn && profs">
+                            <li><a href=""><i class="fa fa-phone" ></i>    {{profs.lprofile.tel}}   </a></li>
+                            <li><a href=""><i class="fa fa-envelope"></i>   {{profs.email}}   </a></li>
+
+                            <li>
+                                <p style="color: gold;">
+                                    <i class="fa fa-coins"></i>
+                                    you have
+                                    {{profs.coins}}
+                                </p>
+                            </li>
+
+
+                          
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="social-icons pull-right">
+                        <ul class="nav navbar-nav">
+                            <li><a href=""><i class="fa fa-facebook"></i></a></li>
+                            <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                            <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                            <li><a href=""><i class="fa fa-dribbble"></i></a></li>
+                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                           
+                        </ul>
+                        <li><button href="#" (click)="logout()"   *ngIf="isLoggedIn" class="active"><i class="fa fa-lock"></i> logout   </button>
+                            
+                                
+                            {{username}}    <img  class="img-circle"  [src]="'data:image/jpeg;base64,'+ profs.lprofile.picprofile" height="85px" width="85px"  *ngIf="isLoggedIn &&  profs.lprofile.picprofile"/>
+                            <img  class="img-circle"  src="../../../assets/images/avatar.jpg" height="85px" width="85px"  *ngIf="isLoggedIn &&  !profs.lprofile.picprofile"/>
+        
+                           
+                        </li>
+                    </div>
+                
+                </div>
+                
+                
+            </div>
+        </div>
+    </div><!--/header_top-->
+    
+    <div class="header-middle"><!--header-middle-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="logo pull-left">
+                        <a href=""><img src="../../../assets/images/home/training1.jpg"   height="120" width="120" alt="" /></a>
+                    </div>
+                    <div class="btn-group pull-right">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                Tunisia
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Algeria</a></li>
+                                <li><a href="">Marroco</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
+                                DINARD
+                                <span class="caret"></span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li><a href="">Tunisia Dinars</a></li>
+                                <li><a href=""> Danouss  </a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="shop-menu pull-right">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                        
+                            <li>
+                                <a href="https://shrouded-peak-88216.herokuapp.com/" target="_blank">
+                                <i class="fa fa-send">
+
+                                </i>
+                                chat 
+                                </a>
+                                </li>
+                            <li><a href="/home/wishlist"  *ngIf="isLoggedIn"><i class="fa fa-star"></i> Wishlist</a></li>
+
+
+                            <li><a href="/home/welcome"  *ngIf="isLoggedIn"><i class="fa fa-chart"></i> polls</a></li>
+                            <li><a href="/home/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
+                            <li><a href="/home/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="/home/editprofile"><i class="fa fa-edit"  *ngIf="isLoggedIn"></i> edit</a></li>
+                            <li><a href="/home/login"   *ngIf="!isLoggedIn" class="active"><i class="fa fa-lock"></i> Login</a></li>
+                           
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-middle-->
+
+    <div class="header-bottom"><!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="">Home
+                                <i class="fa fa-home">
+
+                                </i>
+                            </a></li>
+                            <li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="/home/shop">Products</a></li>
+                                    <li><a href="/home/account"><i class="fa fa-user"></i> Account</a></li>
+                                    <li><a href="/home/product-details">Product Details</a></li> 
+                                    <li><a href="/home/checkout">Checkout</a></li> 
+                                    <li><a href="/home/cart">Cart</a></li> 
+                                    <li><a href="/home/music">music</a></li> 
+                                    <li><a href="/home/login" class="active">Login</a></li> 
+                                    
+                            <li><a href="/home/catalog"  *ngIf="isLoggedIn"><i class="fa fa-smile"></i> catalog</a></li>
+                                </ul>
+                            </li> 
+                            <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="/home/blog">Blog List</a></li>
+                                    <li><a href="/home/blog-single">Blog Single</a></li>
+                                </ul>
+                            </li> 
+                            <li><a href="/home/myprofile">
+                             <i class="fa fa-heart">
+
+                             </i>
+                            </a></li>
+                            <li><a href="/home/contact-us">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="search_box pull-right">
+                        <input type="text" placeholder="Search" [(ngModel)]="term" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+</header><!--/header-->
+

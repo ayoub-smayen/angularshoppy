@@ -1,0 +1,42 @@
+
+<section id="slider"><!--slider-->
+    <div class="container">
+<div class="box">
+    <div class="notifications">
+        <i class="fa fa-heart"></i>
+        <span class="num">{{favourites.products.length}}</span>
+            
+           
+          
+      
+        <ul >
+
+            <li class="icon" *ngFor="let p of favourites.products | paginate: { itemsPerPage: 5, currentPage: p }">
+                <span class="icon"><i class="fa fa-toggle-on"></i></span>
+                <label>
+                    product name
+                </label>
+                <br/>
+                <span class="text">{{p.productname}}</span>
+                <label>
+                    codebar
+                </label>
+                <br/>
+                <span class="badge badge-primary">
+                    #{{p.codebar}}
+                </span>
+                <span>
+                    <img [src]="'data:image/jpeg;base64,' + p.productImg" alt="data:image/jpeg;base64" height="80" width="80" />
+                </span>
+                <a [routerLink]="['/finalshop/productdet', p.product_id]"    class="p-name">{{p.productname}}</a>
+            </li>
+          
+           
+        </ul>
+        <pagination-controls (pageChange)="p = $event"></pagination-controls>
+    </div>
+</div>
+
+</div>
+
+</section>
