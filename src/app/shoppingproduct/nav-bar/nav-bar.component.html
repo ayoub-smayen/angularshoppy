@@ -99,10 +99,17 @@
                                 </li>
                             <li><a href="/home/wishlist"  *ngIf="isLoggedIn"><i class="fa fa-star"></i> Wishlist</a></li>
 
+                            <li><a href="/home/cart"  *ngIf="isLoggedIn"><i class="fa fa-star"></i> 
+                                cart
+                             <i class="fa fa-besket">
+
+                             </i>
+                            </a></li>
+
 
                             <li><a href="/home/welcome"  *ngIf="isLoggedIn"><i class="fa fa-chart"></i> polls</a></li>
                             <li><a href="/home/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="/home/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="/home/cart0"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="/home/editprofile"><i class="fa fa-edit"  *ngIf="isLoggedIn"></i> edit</a></li>
                             <li><a href="/home/login"   *ngIf="!isLoggedIn" class="active"><i class="fa fa-lock"></i> Login</a></li>
                            
@@ -140,7 +147,7 @@
                                     <li><a href="/home/checkout">Checkout</a></li> 
                                     <li><a href="/home/cart">Cart</a></li> 
                                     <li><a href="/home/music">music</a></li> 
-                                    <li><a href="/home/login" class="active">Login</a></li> 
+                                    <li><a href="/home/login"  *ngIf="!isLoggedIn"  class="active">Login</a></li> 
                                     
                             <li><a href="/home/catalog"  *ngIf="isLoggedIn"><i class="fa fa-smile"></i> catalog</a></li>
                                 </ul>

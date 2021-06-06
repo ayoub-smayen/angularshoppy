@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { AccountpageComponent } from './accountpage/accountpage.component';
 import { BlogSingleComponent } from './blog-single/blog-single.component';
 import { BlogComponent } from './blog/blog.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
 import { CartComponent } from './cart/cart.component';
 import { CatalogpageComponent } from './catalogpage/catalogpage.component';
 import { CheckoutComponent } from './checkout/checkout.component';
@@ -74,6 +75,10 @@ const routes: Routes = [
           path :  'contact-us', component : ContactUsComponent ,     
         },
 
+        {
+          path:'cart0',
+          component:CartPageComponent
+      },
 
         {
           path :  'myprofile', component : MyprofileComponent ,
@@ -82,7 +87,9 @@ const routes: Routes = [
         {
           path :  'wishlist', component : WishlistComponent ,
         },
-        
+        {
+          path : 'productdet/:id' , component :  ProductDetailsComponent
+        },
   { path: 'welcome', component: WelcomeComponent },
  
   { path: 'poll/:id', component: OpollComponent },

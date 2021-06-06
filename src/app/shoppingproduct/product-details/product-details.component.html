@@ -135,7 +135,7 @@
                     </div><!--/price-range-->
                     
                     <div class="shipping text-center"><!--shipping-->
-                        <img src="images/home/shipping.jpg" alt="" />
+                        <img src ="{{'data:image/jpeg;base64,' + product1.productImg}}" alt="" />
                     </div><!--/shipping-->
                     
                 </div>
@@ -145,8 +145,11 @@
                 <div class="product-details"><!--product-details-->
                     <div class="col-sm-5">
                         <div class="view-product">
-                            <img src="images/product-details/1.jpg" alt="" />
-                            <h3>ZOOM</h3>
+                            <img src ="{{'data:image/jpeg;base64,' + product1.productImg}}" alt="" />
+                            <h3>{{product1.productname}}</h3>
+                            <p>
+                                {{product1.productdescription}}
+                            </p>
                         </div>
                         <div id="similar-product" class="carousel slide" data-ride="carousel">
                             
@@ -179,16 +182,75 @@
                               </a>
                         </div>
 
+                        <div class="example-wrapper">
+                                      
+                
+                            <p>
+                                add comment 
+                            </p>
+                            
+                       <details>
+                               <form class="k-form">
+                                   <fieldset>
+                                       <legend>comment {{product1.product_id}}  </legend>
+                       
+                                       <label class="k-form-field">
+                                           <span>title</span>
+                                           <input class="k-textbox" name="title" placeholder="prod.ttile" [(ngModel)]="myComment.title" />
+                                           {{myComment.title}}
+                                       </label>
+                                       <label class="k-form-field">
+                                           <span>body comment</span>
+                                           <input class="k-textbox" name="bodyComment" placeholder="prod.bodyCommen" [(ngModel)]="myComment.bodyComment" />
+                                           {{myComment.bodyComment}}
+                                       </label>
+                                   </fieldset>
+                       
+                                   <div class="text-right">
+                                      
+                                       <button type="button" class="k-button k-primary" (click)="submit(product1.product_id)">Submit</button>
+                                   </div>
+                               </form>
+                           here    {{product1.comments}}
+                        </details>
+
+
+                           
+                               <details *ngIf="comments">
+                                  
+                                <div  *ngFor="let comm of comments">
+                     
+                                  <time>
+                                      {{comm.createdAt}}
+                                  </time>
+                                    <span>
+                                         by:   {{comm.user.username}}
+                                    </span>
+                                    <span>
+                                        {{comm.title}}
+                                    </span>
+                                    <span>
+                                        {{comm.bodyComment}}
+                                    </span>
+                                    <img src ="{{'data:image/jpeg;base64,' + comm.user.lprofile .picprofile}}" alt="" height="80" width="85" />
+                                </div>
+                               
+                            </details>
+
+
+                              
+                             </div>
+
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
                             <img src="images/product-details/new.jpg" class="newarrival" alt="" />
-                            <h2>Anne Klein Sleeveless Colorblock Scuba</h2>
-                            <p>Web ID: 1089772</p>
+                            <h2>{{product1.price}}</h2>
+                            <p>{{product1.productdescription}}</p>
                             <img src="images/product-details/rating.png" alt="" />
                             <span>
-                                <span>US $59</span>
-                                <label>Quantity:</label>
+                                <span>US ${{product1.price}}</span>
+                                <label>Quantity: {{product1.quantity}}</label>
                                 <input type="text" value="3" />
                                 <button type="button" class="btn btn-fefault cart">
                                     <i class="fa fa-shopping-cart"></i>
@@ -209,7 +271,15 @@
                             <li><a href="#details" data-toggle="tab">Details</a></li>
                             <li><a href="#companyprofile" data-toggle="tab">Company Profile</a></li>
                             <li><a href="#tag" data-toggle="tab">Tag</a></li>
-                            <li class="active"><a href="#reviews" data-toggle="tab">Reviews (5)</a></li>
+                            <li class="active"><a href="#reviews" data-toggle="tab"  *ngIf="comments ; else zero">Reviews ( 
+                                {{comments.length}}
+                                )</a></li>
+<ng-template #zero>
+    <li class="active"><a href="#reviews" data-toggle="tab">Reviews ( 
+        0
+        )</a></li>
+</ng-template>
+                           
                         </ul>
                     </div>
                     <div class="tab-content">
@@ -366,28 +436,41 @@
                             </div>
                         </div>
                         
-                        <div class="tab-pane fade active in" id="reviews" >
-                            <div class="col-sm-12">
+                        <div class="tab-pane fade active in" id="reviews" *ngIf="comments">
+
+                        
+                            <div class="col-sm-12"  *ngFor="let comm of comments">
                                 <ul>
-                                    <li><a href=""><i class="fa fa-user"></i>EUGEN</a></li>
-                                    <li><a href=""><i class="fa fa-clock-o"></i>12:41 PM</a></li>
-                                    <li><a href=""><i class="fa fa-calendar-o"></i>31 DEC 2014</a></li>
+                                    <li><a href=""><i class="fa fa-user"></i> by:   {{comm.user.username}}</a></li>
+                                    <li><a href=""><i class="fa fa-clock-o"></i>
+                                        <time>
+                                            {{comm.createdAt}}
+                                        </time>
+                                    </a></li>
+                                    <li><a href=""><i class="fa fa-calendar-o"></i> {{comm.updatedAt}}</a></li>
+                                    <img src ="{{'data:image/jpeg;base64,' + comm.user.lprofile .picprofile}}" alt="" height="80" width="85" />
                                 </ul>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                                <p><b>Write Your Review</b></p>
+                                <p>  {{comm.bodyComment}}.</p>
+                                <p><b>       {{comm.title}}</b></p>
                                 
-                                <form action="#">
-                                    <span>
-                                        <input type="text" placeholder="Your Name"/>
-                                        <input type="email" placeholder="Email Address"/>
-                                    </span>
-                                    <textarea name="" ></textarea>
-                                    <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
-                                    <button type="button" class="btn btn-default pull-right">
-                                        Submit
-                                    </button>
-                                </form>
+                                
                             </div>
+
+                           
+
+
+
+                            <form>
+                                <span>
+                                    <input name="title" placeholder="prod.ttile" [(ngModel)]="myComment.title"/>
+                                   
+                                </span>
+                                <textarea class="k-textbox" name="bodyComment" placeholder="prod.bodyCommen" [(ngModel)]="myComment.bodyComment" ></textarea>
+                                <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                                <button  type="button" class="k-button k-primary btn btn-default pull-right" (click)="submit(product1.product_id)">
+                                    Submit
+                                </button>
+                            </form>
                         </div>
                         
                     </div>

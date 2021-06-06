@@ -1,4 +1,5 @@
-
+<section id="slider"><!--slider-->
+    
 <div class="container">
     <div class="row">
         <div class="col-md-3">
@@ -6,11 +7,16 @@
                 <div class="border-bottom p-4">
                     <div class="osahan-user text-center">
                         <div class="osahan-user-media">
-                            <img class="mb-3 rounded-pill shadow-sm mt-1" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="gurdeep singh osahan">
+                            <img class="mb-3 rounded-pill shadow-sm mt-1" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="gurdeep singh osahan" *ngIf="!profs.lprofile.picprofile">
+                           
+
+                            <img class="mb-3 rounded-pill shadow-sm mt-1" [src]="'data:image/jpeg;base64,'+ profs.lprofile.picprofile" *ngIf="profs.lprofile.picprofile" alt="gurdeep singh osahan">
                             <div class="osahan-user-media-body">
-                                <h6 class="mb-2">John Doe</h6>
-                                <p class="mb-1">+91 85680-79956</p>
-                                <p>bootdey@bootdey.com</p>
+                                <h6 class="mb-2">
+                                    {{username}}
+                                </h6>
+                                <p class="mb-1"> {{profs.lprofile.tel}}</p>
+                                <p> {{profs.email}} </p>
                                 <p class="mb-0 text-black font-weight-bold"><a class="text-primary mr-3" data-toggle="modal" data-target="#edit-profile-modal" href="#"><i class="icofont-ui-edit"></i> EDIT</a></p>
                             </div>
                         </div>
@@ -29,147 +35,36 @@
                     <div class="tab-pane fade  active show" id="favourites" role="tabpanel" aria-labelledby="favourites-tab">
                         <h4 class="font-weight-bold mt-0 mb-4">Favorites</h4>
                         <div class="row">
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
+                            <div class="col-md-4 col-sm-6 mb-4 pb-2" *ngFor="let p of favourites.products | paginate: { itemsPerPage: 3, currentPage: p }">
                                 <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
                                     <div class="list-card-image">
                                         <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
                                         <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
                                         <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
                                         <a href="#">
-                                            <img src="img/list/4.png" class="img-fluid item-img">
+                                            <img [src]="'data:image/jpeg;base64,' + p.productImg" class="img-fluid item-img" height="50" width="80">
                                         </a>
                                     </div>
                                     <div class="p-3 position-relative">
                                         <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 1
+                                            <h6 class="mb-1"><a href="#" class="text-black">{{p.productname}}
                                              </a>
                                           </h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
+                                            <p class="text-gray mb-3">{{p.price}}</p>
                                             <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–30 min</span> <span class="float-right text-black-50"> $350 FOR TWO</span></p>
                                         </div>
                                         <div class="list-card-badge">
-                                            <span class="badge badge-danger">OFFER</span> <small> Use Coupon OSAHAN50</small>
+                                            <span class="badge badge-danger">OFFER</span> <small>  #  {{p.codebar}}</small>
+
+
+
                                         </div>
+                                        <a [routerLink]="['/home/productdet', p.product_id]"    class="p-name">{{p.productname}}</a>
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                        <a href="#">
-                                            <img src="img/list/5.png" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 2</a></h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
-                                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 30–35 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <span class="badge badge-success">OFFER</span> <small>65% off</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                        <a href="#">
-                                            <img src="img/list/6.png" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 3
-                                             </a>
-                                          </h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
-                                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $500 FOR TWO</span></p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <span class="badge badge-danger">OFFER</span> <small>65% OSAHAN50</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                        <a href="#">
-                                            <img src="img/list/7.png" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 4
-                                             </a>
-                                          </h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
-                                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <span class="badge badge-danger">OFFER</span> <small>65% Coupon OSAHAN50</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                        <a href="#">
-                                            <img src="img/list/8.png" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 5
-                                             </a>
-                                          </h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
-                                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <span class="badge badge-danger">OFFER</span> <small> Coupon OSAHAN50</small>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4 col-sm-6 mb-4 pb-2">
-                                <div class="list-card bg-white h-100 rounded overflow-hidden position-relative shadow-sm">
-                                    <div class="list-card-image">
-                                        <div class="star position-absolute"><span class="badge badge-success"><i class="icofont-star"></i> 3.1 (300+)</span></div>
-                                        <div class="favourite-heart text-danger position-absolute"><a href="#"><i class="icofont-heart"></i></a></div>
-                                        <div class="member-plan position-absolute"><span class="badge badge-dark">Promoted</span></div>
-                                        <a href="#">
-                                            <img src="img/list/9.png" class="img-fluid item-img">
-                                        </a>
-                                    </div>
-                                    <div class="p-3 position-relative">
-                                        <div class="list-card-body">
-                                            <h6 class="mb-1"><a href="#" class="text-black">Product 6
-                                             </a>
-                                          </h6>
-                                            <p class="text-gray mb-3">Category 1, Category 2, Another category</p>
-                                            <p class="text-gray mb-3 time"><span class="bg-light text-dark rounded-sm pl-2 pb-1 pt-1 pr-2"><i class="icofont-wall-clock"></i> 15–25 min</span> <span class="float-right text-black-50"> $250 FOR TWO</span></p>
-                                        </div>
-                                        <div class="list-card-badge">
-                                            <span class="badge badge-danger">OFFER</span> <small>65% </small>
-                                        </div>
-                                    </div>
-                                </div>
+                        
+                               
                             </div>
                             <div class="col-md-12 text-center load-more">
                                 <button class="btn btn-primary" type="button" disabled="">
@@ -178,9 +73,12 @@
                                 </button>
                             </div>
                         </div>
+
+                        
+      <pagination-controls (pageChange)="p = $event"></pagination-controls>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+</section>

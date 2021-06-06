@@ -34,12 +34,18 @@ import { OpollComponent } from './opoll/opoll.component';
 import { CompareproductComponent } from './compareproduct/compareproduct.component';
 import { AccountpageComponent } from './accountpage/accountpage.component';
 import { CatalogpageComponent } from './catalogpage/catalogpage.component';
+import { QuantityControlComponent } from './quantity-control/quantity-control.component';
+import { TopbarComponent } from './topbar/topbar.component';
+import { CartPopupComponent } from './cart-popup/cart-popup.component';
+import { CartBaseComponent } from './cart-base/cart-base.component';
+import { CartPageComponent } from './cart-page/cart-page.component';
+import { CartService } from '../services/cart.service';
 
 @NgModule({
   declarations: [LoginComponent, CartComponent, WishlistComponent, BlogComponent, BlogSingleComponent, CheckoutComponent, ContactUsComponent, IndexComponent, ProductDetailsComponent, ShopComponent, NotFoundComponent, NavBarComponent, FooterComponent, HomepageComponent, MusicpageComponent, EditprofileComponent, MyprofileComponent, PollsmallComponent, WelcomeComponent, OpollComponent, CompareproductComponent,
     
     
-   AccountpageComponent, CatalogpageComponent
+   AccountpageComponent, CatalogpageComponent, QuantityControlComponent, TopbarComponent, CartPopupComponent, CartBaseComponent, CartPageComponent
   
   ],
   imports: [
@@ -54,6 +60,7 @@ import { CatalogpageComponent } from './catalogpage/catalogpage.component';
     NgxChartsModule,
     NgxDatatableModule,
     FlashMessagesModule.forRoot()
-  ]
+  ],
+  providers: [CartService]
 })
 export class ShoppingproductModule { }
