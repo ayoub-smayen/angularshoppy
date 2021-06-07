@@ -17,6 +17,7 @@ import { MyprofileComponent } from './myprofile/myprofile.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { OpollComponent } from './opoll/opoll.component';
 import { ProductDetailsComponent } from './product-details/product-details.component';
+import { PublicationComponent } from './publication/publication.component';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { WishlistComponent } from './wishlist/wishlist.component';
 
@@ -86,6 +87,10 @@ const routes: Routes = [
 
         {
           path :  'wishlist', component : WishlistComponent ,
+        },
+
+        {
+          path :  'publication', component : PublicationComponent ,
         },
         {
           path : 'productdet/:id' , component :  ProductDetailsComponent

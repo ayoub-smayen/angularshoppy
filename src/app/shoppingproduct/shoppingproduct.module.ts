@@ -40,12 +40,15 @@ import { CartPopupComponent } from './cart-popup/cart-popup.component';
 import { CartBaseComponent } from './cart-base/cart-base.component';
 import { CartPageComponent } from './cart-page/cart-page.component';
 import { CartService } from '../services/cart.service';
+import { ChatshopComponent } from './chatshop/chatshop.component';
+import { PublicationComponent } from './publication/publication.component';
+import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [LoginComponent, CartComponent, WishlistComponent, BlogComponent, BlogSingleComponent, CheckoutComponent, ContactUsComponent, IndexComponent, ProductDetailsComponent, ShopComponent, NotFoundComponent, NavBarComponent, FooterComponent, HomepageComponent, MusicpageComponent, EditprofileComponent, MyprofileComponent, PollsmallComponent, WelcomeComponent, OpollComponent, CompareproductComponent,
     
     
-   AccountpageComponent, CatalogpageComponent, QuantityControlComponent, TopbarComponent, CartPopupComponent, CartBaseComponent, CartPageComponent
+   AccountpageComponent, CatalogpageComponent, QuantityControlComponent, TopbarComponent, CartPopupComponent, CartBaseComponent, CartPageComponent, ChatshopComponent, PublicationComponent
   
   ],
   imports: [
@@ -59,7 +62,8 @@ import { CartService } from '../services/cart.service';
     ReactiveFormsModule,
     NgxChartsModule,
     NgxDatatableModule,
-    FlashMessagesModule.forRoot()
+    FlashMessagesModule.forRoot(),
+    MomentModule
   ],
   providers: [CartService]
 })

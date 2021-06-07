@@ -13,6 +13,10 @@
                         <div class="item active">
                             <div class="col-sm-6">
                                 <h1><span>E</span>-SHOPPER</h1>
+
+                                <p>
+                                    {{user |  json}}
+                                </p>
                                 <h2>Free E-Commerce Template</h2>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
                                 <button type="button" class="btn btn-default get">Get it now</button>
@@ -345,7 +349,10 @@
                             </div>
                             <div class="choose">
                                 <ul class="nav nav-pills nav-justified">
-                                    <li><button  class="btn btn-primary" (click)="putFavourite(prod.product_id)"><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
+                                    <!-- <li><button  class="btn btn-primary" *ngIf="user.fav" (click)="addFavourite()"><i class="fa fa-plus-square" *ngIf="!user.fav"></i>Add to wishlist</button></li> -->
+
+
+                                    <li><button  class="btn btn-primary" (click)="putFavourite(prod.product_id)" ><i class="fa fa-plus-square"></i>Add to wishlist</button></li>
                                     <li><button class="btn btn-default add-to-cart " ><i class="fa fa-plus-square"></i>Add to compare</button></li>
 
                                     <a [routerLink]="['/home/productdet', prod.product_id]"    class="p-name"  >

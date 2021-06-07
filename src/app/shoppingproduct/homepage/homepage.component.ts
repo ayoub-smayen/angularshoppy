@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Category } from 'src/app/models/category';
+import { User } from 'src/app/models/user';
+import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
@@ -16,6 +18,8 @@ export class HomepageComponent implements OnInit {
 
   constructor(private catserv : CategoryService,
     private   httpclient : HttpClient,
+
+   private  authservice : AuthService,
 
     private route: ActivatedRoute,
 
@@ -41,6 +45,8 @@ export class HomepageComponent implements OnInit {
     this.getAllCategoreis();
     this.getAllProducts();
     this.getFavourite();
+    this.getCurentUser();
+
 
    /* this.route.params
         .subscribe(res => {
@@ -129,6 +135,20 @@ private sub;
 quantity: number = 1;
 favourites : any;
 
+user : User  ; 
+
+getCurentUser(){
+
+    this.authservice.getCuurentUser().subscribe(res=>{
+        this.user  = res;
+
+        console.log(res);
+    })
+    
+}
+
+
+
 putFavourite(id : number){
 
   alert(this.favourites.favourite_id );
@@ -148,6 +168,26 @@ putFavourite(id : number){
    })
 }
 
+
+
+addFavourite(){
+
+  alert(this.favourites.favourite_id );
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': localStorage.getItem('jwt') !== null ? 'Bearer ' + localStorage.getItem('jwt') : ''
+    }),
+    
+  };
+   return this.httpclient.post("http://localhost:8091/api/addfav/" , {} ,httpOptions ).subscribe
+
+   (res=>{
+     console.log(res);
+
+     alert("you  update  your  favourite ")
+   })
+}
 changeQuantity = (newQuantity:number) => {
     this.quantity = newQuantity;
 };

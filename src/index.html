@@ -74,6 +74,31 @@
        document. body.classList.toggle("--dark");
       }
     </script>
+
+<script>
+ 
+  $(document).ready(function() {
+     $(document).ready(function() {
+
+         alert("jquery active");
+         var $chatbox = $('.chatbox'),
+             $chatboxTitle = $('.chatbox__title'),
+             $chatboxTitleClose = $('.chatbox__title__close'),
+             $chatboxCredentials = $('.chatbox__credentials');
+         $chatboxTitle.on('click', function() {
+             $chatbox.toggleClass('chatbox--tray');
+         });
+         
+         
+         
+     });
+ 
+     
+ });
+ 
+ 
+ 
+   </script>
     <!-- <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css"> -->
     <!-- <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script> -->

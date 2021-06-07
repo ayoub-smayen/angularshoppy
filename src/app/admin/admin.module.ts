@@ -8,10 +8,11 @@ import { AddproductComponent } from './addproduct/addproduct.component';
 import { EditprofileComponent } from './editprofile/editprofile.component';
 import { AddcategoriesComponent } from './addcategories/addcategories.component';
 import { AdminorderComponent } from './adminorder/adminorder.component';
+import { ChartproductComponent } from './chartproduct/chartproduct.component';
 
 
 @NgModule({
-  declarations: [IndexComponent, ChartComponent, AddproductComponent, EditprofileComponent, AddcategoriesComponent, AdminorderComponent],
+  declarations: [IndexComponent, ChartComponent, AddproductComponent, EditprofileComponent, AddcategoriesComponent, AdminorderComponent, ChartproductComponent],
   imports: [
     CommonModule,
     AdminRoutingModule
