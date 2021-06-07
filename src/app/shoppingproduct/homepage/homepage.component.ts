@@ -156,7 +156,45 @@ addToCart = (product) => {
 };
 
 
+sort(event: any) {
+  switch (event.target.value) {
+    case "Low":
+      {
+        this.products = this.products.sort((low, high) => low.price - high.price);
+        break;
+      }
 
+    case "High":
+      {
+        this.products = this.products.sort((low, high) => high.price - low.price);
+        break;
+      }
+
+    case "Name":
+      {
+        this.products = this.products.sort(function (low, high) {
+          if (low.productname < high.productname) {
+            return -1;
+          }
+          else if (low.productname > high.productname) {
+            return 1;
+          }
+          else {
+            return 0;
+          }
+        })
+        break;
+      }
+
+    default: {
+      this.getAllProducts();
+      break;
+    }
+
+  }
+  return this.products;
+
+}
 addViews(id:number){
   const httpOptions = {
     headers: new HttpHeaders({

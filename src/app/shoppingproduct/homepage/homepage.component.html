@@ -315,12 +315,20 @@
                     <h2 class="title text-center">Features Items</h2>
 
 
+
+                    <select id="sort-by" (change)="sort($event)">
+                        <option value="" selected disabled hidden>Sort By</option>
+                        <option value="Name">Name</option>
+                        <option value="Low">Show Low to High Price</option>
+                        <option value="High">Show High to Low Price</option>
+                    </select>
                     <div class="col-sm-4" *ngFor="let prod of products | paginate: { itemsPerPage: 10, currentPage: p } | filter:term" >
                         <div class="product-image-wrapper">
                             <div class="single-products">
                                     <div class="productinfo text-center">
                                         <img src="{{'data:image/jpeg;base64,' + prod.productImg}}"  height="185px" width="185px" class="img img-responsive" alt="product img" />
-                                        <h2> {{prod.price}} dt</h2>
+                                        <del> {{prod.price}} dt</del>
+                                        <h2> {{prod.remise_price}} dt</h2>
                                         <p>{{prod.productname}}</p>
                                         <img  src="http://localhost:8091/api/qr-code/{{prod.product_id}}" height="100" width="100"   />
                                         <button class="btn btn-default add-to-cart" (click)="addToCart(prod)"><i class="fa fa-shopping-cart"></i>Add to cart</button>

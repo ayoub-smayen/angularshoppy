@@ -452,6 +452,8 @@
                                 </ul>
                                 <p>  {{comm.bodyComment}}.</p>
                                 <p><b>       {{comm.title}}</b></p>
+
+                                <img src ="{{'data:image/jpeg;base64,' + comm.comment_pic}}" alt="" height="80" width="85"  />
                                 
                                 
                             </div>
@@ -466,7 +468,11 @@
                                    
                                 </span>
                                 <textarea class="k-textbox" name="bodyComment" placeholder="prod.bodyCommen" [(ngModel)]="myComment.bodyComment" ></textarea>
-                                <b>Rating: </b> <img src="images/product-details/rating.png" alt="" />
+                         
+                              
+                                <input   type="file" (change)="onFileChanged2($event)">
+                                <img [src]="imageUrl2" height="200" width="200" *ngIf="imageUrl2">
+                                
                                 <button  type="button" class="k-button k-primary btn btn-default pull-right" (click)="submit(product1.product_id)">
                                     Submit
                                 </button>

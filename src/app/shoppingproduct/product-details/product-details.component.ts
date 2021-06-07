@@ -28,6 +28,9 @@ export class ProductDetailsComponent implements OnInit {
     title:  '',
     bodyComment : ''
     };
+    private selectedFile2;
+    // imgURL: any;
+     imageUrl2: any;
   getAllproducts(){
     this.http.getAllproducts2().subscribe(res=>{
 
@@ -36,6 +39,17 @@ export class ProductDetailsComponent implements OnInit {
        console.log(res);
     })
 }
+public onFileChanged2(event) {
+  console.log(event);
+  this.selectedFile2 = event.target.files[0];
+
+  let reader = new FileReader();
+  reader.readAsDataURL(event.target.files[0]);
+  reader.onload = (event2) => {
+    this.imageUrl2 = reader.result;
+  };
+
+}
 submit(id:number) {
   const httpOptions = {
     headers: new HttpHeaders({
@@ -43,14 +57,39 @@ submit(id:number) {
       'Authorization': localStorage.getItem('jwt') !== null ? 'Bearer ' + localStorage.getItem('jwt') : ''
     })
   };
-    return this.httpclient.post("http://localhost:8091/api/addComment/"+ id,this.myComment,httpOptions).subscribe(res=>{
-      console.log(res);
-      this.getAllproducts();
 
-      window.location.href  =window.location.href;
+
+   
+ 
+    const uploadData = new FormData();
+    uploadData.append('imageFile', this.selectedFile2, this.selectedFile2.name);
+
+    //uploadData.append('title', this.myComment.title);
+
+    //uploadData.append('bodyComment', this.myComment.bodyComment);
+
+
+    this.httpclient.post('http://localhost:8091/api/uploadpcommentimage', uploadData, { observe: 'response' })
+    .subscribe((response) => {
+      console.log(response);
+
+      if (response.status === 200) {
+        return this.httpclient.post("http://localhost:8091/api/addComment/"+ id,this.myComment,httpOptions).subscribe(res=>{
+      console.log(res);
+     // this.getAllproducts();
+
+    //  window.location.href  =window.location.href;
      
     })
     
+       
+      } else {
+        console.log('Image not uploaded successfully');
+      }
+    }
+    );
+    
+  
   
 }
 
@@ -71,7 +110,7 @@ submit(id:number) {
       console.log(res);
       alert(res);
       this.comments = res;
-     // this.getAllproducts();
+      this.getAllproducts();
 
      // window.location.href  =window.location.href;
      
