@@ -23,7 +23,7 @@
                             </li>
 
 
-                          
+
                         </ul>
                     </div>
                 </div>
@@ -35,25 +35,25 @@
                             <li><a href=""><i class="fa fa-linkedin"></i></a></li>
                             <li><a href=""><i class="fa fa-dribbble"></i></a></li>
                             <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                           
+
                         </ul>
                         <li><button href="#" (click)="logout()"   *ngIf="isLoggedIn" class="active"><i class="fa fa-lock"></i> logout   </button>
-                            
-                                
+
+
                             {{username}}    <img  class="img-circle"  [src]="'data:image/jpeg;base64,'+ profs.lprofile.picprofile" height="85px" width="85px"  *ngIf="isLoggedIn &&  profs.lprofile.picprofile"/>
                             <img  class="img-circle"  src="../../../assets/images/avatar.jpg" height="85px" width="85px"  *ngIf="isLoggedIn &&  !profs.lprofile.picprofile"/>
-        
-                           
+
+
                         </li>
                     </div>
-                
+
                 </div>
-                
-                
+
+
             </div>
         </div>
     </div><!--/header_top-->
-    
+
     <div class="header-middle"><!--header-middle-->
         <div class="container">
             <div class="row">
@@ -72,7 +72,7 @@
                                 <li><a href="">Marroco</a></li>
                             </ul>
                         </div>
-                        
+
                         <div class="btn-group">
                             <button type="button" class="btn btn-default dropdown-toggle usa" data-toggle="dropdown">
                                 DINARD
@@ -88,18 +88,18 @@
                 <div class="col-sm-8">
                     <div class="shop-menu pull-right">
                         <ul class="nav navbar-nav collapse navbar-collapse">
-                        
+
                             <li>
                                 <a href="https://shrouded-peak-88216.herokuapp.com/" target="_blank">
                                 <i class="fa fa-send">
 
                                 </i>
-                                chat 
+                                chat
                                 </a>
                                 </li>
                             <li><a href="/home/wishlist"  *ngIf="isLoggedIn"><i class="fa fa-star"></i> Wishlist</a></li>
 
-                            <li><a href="/home/cart"  *ngIf="isLoggedIn"><i class="fa fa-star"></i> 
+                            <li><a href="/home/cart"  *ngIf="isLoggedIn"><i class="fa fa-star"></i>
                                 cart
                              <i class="fa fa-besket">
 
@@ -110,10 +110,10 @@
                             <li><a href="/home/welcome"  *ngIf="isLoggedIn"><i class="fa fa-chart"></i> polls</a></li>
                             <li><a href="/home/publication"  *ngIf="isLoggedIn"><i class="fas fa-newspaper"></i> publication</a></li>
                             <li><a href="/home/checkout"><i class="fa fa-crosshairs"></i> Checkout</a></li>
-                            <li><a href="/home/cart0"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+                            <li><a href="/home/cart"><i class="fa fa-shopping-cart"></i> Cart</a></li>
                             <li><a href="/home/editprofile"><i class="fa fa-edit"  *ngIf="isLoggedIn"></i> edit</a></li>
                             <li><a href="/home/login"   *ngIf="!isLoggedIn" class="active"><i class="fa fa-lock"></i> Login</a></li>
-                           
+
                         </ul>
                     </div>
                 </div>
@@ -144,21 +144,21 @@
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/home/shop">Products</a></li>
                                     <li><a href="/home/account"><i class="fa fa-user"></i> Account</a></li>
-                                    <li><a href="/home/product-details">Product Details</a></li> 
-                                    <li><a href="/home/checkout">Checkout</a></li> 
-                                    <li><a href="/home/cart">Cart</a></li> 
-                                    <li><a href="/home/music">music</a></li> 
-                                    <li><a href="/home/login"  *ngIf="!isLoggedIn"  class="active">Login</a></li> 
-                                    
+                                    <li><a href="/home/product-details">Product Details</a></li>
+                                    <li><a href="/home/checkout">Checkout</a></li>
+                                    <li><a href="/home/cart">Cart</a></li>
+                                    <li><a href="/home/music">music</a></li>
+                                    <li><a href="/home/login"  *ngIf="!isLoggedIn"  class="active">Login</a></li>
+
                             <li><a href="/home/catalog"  *ngIf="isLoggedIn"><i class="fa fa-smile"></i> catalog</a></li>
                                 </ul>
-                            </li> 
+                            </li>
                             <li class="dropdown"><a href="#">Blog<i class="fa fa-angle-down"></i></a>
                                 <ul role="menu" class="sub-menu">
                                     <li><a href="/home/blog">Blog List</a></li>
                                     <li><a href="/home/blog-single">Blog Single</a></li>
                                 </ul>
-                            </li> 
+                            </li>
                             <li><a href="/home/myprofile">
                              <i class="fa fa-heart">
 

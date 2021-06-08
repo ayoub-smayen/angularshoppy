@@ -8,6 +8,8 @@ import { AuthService } from 'src/app/services/auth.service';
 import { CartService } from 'src/app/services/cart.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/product.service';
+import {LignecommandeService} from "../../services/ligne-commande.service";
+import {LigneCommande} from "../../models/LigneCommande";
 
 @Component({
   selector: 'app-homepage',
@@ -24,14 +26,16 @@ export class HomepageComponent implements OnInit {
     private route: ActivatedRoute,
 
     private router  : Router,
-           
+
             private cartService:CartService,
-    
-    private prodSer : ProductService) { 
+
+              private ligneService: LignecommandeService,
+
+    private prodSer : ProductService) {
       this.categories =[];this.products = [];
     }
     p: number = 1;
-    term : string  ; 
+    term : string  ;
 
 
 
@@ -46,7 +50,10 @@ export class HomepageComponent implements OnInit {
     this.getAllProducts();
     this.getFavourite();
     this.getCurentUser();
-
+    this.authservice.getCuurentUser().subscribe(res=>{
+      this.user=res;
+      alert(res);
+    });
 
    /* this.route.params
         .subscribe(res => {
@@ -67,7 +74,7 @@ export class HomepageComponent implements OnInit {
         'Content-Type': 'application/json',
         'Authorization': localStorage.getItem('jwt') !== null ? 'Bearer ' + localStorage.getItem('jwt') : ''
       }),
-      
+
     };
 
     return this.httpclient.get<any>(this.URL_OP2 ,httpOptions);
@@ -79,7 +86,7 @@ export class HomepageComponent implements OnInit {
 
   this.favourites =res;
 
-   
+
 
 
   // this.products = this.favourites.products ;
@@ -90,10 +97,10 @@ export class HomepageComponent implements OnInit {
     alert(el.productname);
   })*/
 //alert(res);
-  
+
   console.log( this.favourites);
 },
- 
+
   err=>{
       console.error(err);
       this.favourites =err;
@@ -115,8 +122,8 @@ export class HomepageComponent implements OnInit {
           // this.categories = [];
       })
 
-      
-     
+
+
   }
 
   getAllProducts(){
@@ -124,7 +131,7 @@ export class HomepageComponent implements OnInit {
       console.log(res);
       this.products = res;
       //alert(res);
-    //  window.location.href = window.location.href; 
+    //  window.location.href = window.location.href;
     })
 }
 
@@ -135,7 +142,7 @@ private sub;
 quantity: number = 1;
 favourites : any;
 
-user : User  ; 
+user : User ;
 
 getCurentUser(){
 
@@ -144,7 +151,7 @@ getCurentUser(){
 
         console.log(res);
     })
-    
+
 }
 
 
@@ -157,7 +164,7 @@ putFavourite(id : number){
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('jwt') !== null ? 'Bearer ' + localStorage.getItem('jwt') : ''
     }),
-    
+
   };
    return this.httpclient.put("http://localhost:8091/api/affectprodfav/" + this.favourites.favourite_id +  "/" +  id , {} ,httpOptions ).subscribe
 
@@ -178,7 +185,7 @@ addFavourite(){
       'Content-Type': 'application/json',
       'Authorization': localStorage.getItem('jwt') !== null ? 'Bearer ' + localStorage.getItem('jwt') : ''
     }),
-    
+
   };
    return this.httpclient.post("http://localhost:8091/api/addfav/" , {} ,httpOptions ).subscribe
 
@@ -248,7 +255,7 @@ addViews(id:number){
       this.router.navigate(['/home/productdet', id]);
     //  this.show();
       //this.showFlash();
-     // window.location.href = window.location.href; 
+     // window.location.href = window.location.href;
      // this.getAllProducts();
     })
 
@@ -260,5 +267,11 @@ ngOnDestroy() {
   category  : any ;
   categories :  Category[];
   products : any;
+
+  public addProductToCart(idproduct: number): void {
+    this.ligneService.addLigneCommande(this.user.id, idproduct,1).subscribe(
+      (response: LigneCommande) => {},
+    );
+  }
 
 }

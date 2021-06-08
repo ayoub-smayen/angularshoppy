@@ -46,10 +46,10 @@ import { MomentModule } from 'ngx-moment';
 
 @NgModule({
   declarations: [LoginComponent, CartComponent, WishlistComponent, BlogComponent, BlogSingleComponent, CheckoutComponent, ContactUsComponent, IndexComponent, ProductDetailsComponent, ShopComponent, NotFoundComponent, NavBarComponent, FooterComponent, HomepageComponent, MusicpageComponent, EditprofileComponent, MyprofileComponent, PollsmallComponent, WelcomeComponent, OpollComponent, CompareproductComponent,
-    
-    
+
+
    AccountpageComponent, CatalogpageComponent, QuantityControlComponent, TopbarComponent, CartPopupComponent, CartBaseComponent, CartPageComponent, ChatshopComponent, PublicationComponent
-  
+
   ],
   imports: [
     CommonModule,
